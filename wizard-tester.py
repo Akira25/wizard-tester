@@ -50,7 +50,7 @@ click_next(browser)
 
 sleep(2)
 # select community
-community = browser.find_element_by_id("cbid.ffwizward.1.net-fuerstenwalde").click()
+#community = browser.find_element_by_id("cbid.ffwizward.1.net-fuerstenwalde").click()
 
 # put data into fields
 hostname = browser.find_element_by_name("cbid.ffwizward.1.hostname")
@@ -116,14 +116,20 @@ except:
 dhcp.send_keys(configs.get("ip_dhcp"))
 
 # configure mesh mode ad-hoc
-browser.find_element_by_id("cbid.ffwizard.1.mode_radio0-adhoc").click
+#browser.find_element_by_id("cbid.ffwizard.1.mode_radio0-adhoc").click
+# radi1 is not present att all routers
+#try:
+#    browser.find_element_by_name("cbid.ffwizard.1.mode_radio1-adhoc").click
+#except:
+#    print("There was no radio1 in LuCI-Wizard. Therefore radio1 was not set to adhoc-mode.")
 
-click_next(browser)
 
+#click_next(browser)
+sleep(20)
 
-sleep(2)
-print("Configuration of your test-node seems to be successfully done.")
+#sleep(2)
+#print("Configuration of your test-node seems to be successfully done.")#
 
-browser.close()
+#browser.close()
 
-exit()
+#exit()

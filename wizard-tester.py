@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
+from pyvirtualdisplay import Display
 import argparse
 from argparse import RawTextHelpFormatter
 from time import sleep
@@ -14,7 +15,7 @@ import sys
 
 
 ## config ##
-luci_webaddress = "http://frei.funk"
+luci_webaddress = "http://192.168.42.1"
 luci_timeout_long = 12
 luci_timeout = 2
 
@@ -118,6 +119,8 @@ def click_next(browser):
         by=By.CLASS_NAME, value="cbi-button.cbi-button-save")
     button.click()
 
+display = Display(visible=0, size=(1280, 720))
+display.start()
 
 opt = Options()
 opt.set_preference("intl.accept_languages", "de-DE")
@@ -261,4 +264,7 @@ print("Configuration of your test-node seems to be successfully done.")
 browser.save_screenshot('06_finished.png')
 browser.close()
 
-exit()
+browser.quit()
+display.stop()
+
+exit(0)
